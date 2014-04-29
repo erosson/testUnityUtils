@@ -7,6 +7,7 @@ class ExampleArgs {
 }
 
 public class LoadLevelArgsExample : MonoBehaviour {
+	public AudioClip clip;
 	// initial value is not used, the default LoadLevelArgs overwrites it
 	public int loadCount = -999;
 
@@ -21,9 +22,10 @@ public class LoadLevelArgsExample : MonoBehaviour {
 		GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
 		// A button, to force a reload of the same level.
 		if (GUILayout.Button("load count: " + loadCount + ". Reload level")) {
-			// 
 			var args = new ExampleArgs();
 			args.loadCount = loadCount + 1;
+			// Our audio survives the level change
+			Audio.PlayClip(clip);
 			LoadLevelArgs.LoadLevel(Application.loadedLevelName, args);
 		}
 		GUILayout.EndArea();
