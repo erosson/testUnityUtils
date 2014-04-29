@@ -14,6 +14,9 @@ public class Main : MonoBehaviour {
 		// LoadLevelArgs.Pop requires a default value, so levels can always be run from the editor safely for testing
 		var param = LoadLevelArgs.Pop<MainParam>();
 		loadCount = param.loadCount;
+		// DebugOverlay test
+		DebugOverlay.Watch("loadCount", () => loadCount);
+		DebugOverlay.Watch("datetime.now", () => System.DateTime.Now);
 	}
 
 	void OnGUI() {
