@@ -28,6 +28,9 @@ public class LoadLevelArgsExample : MonoBehaviour {
 			Audio.PlayClip(clip);
 			LoadLevelArgs.LoadLevel(Application.loadedLevelName, args);
 		}
+		if (GUILayout.Button("force game over")) {
+			LoadLevelArgs.LoadLevel("GameOver", "Game over!!\n\nloadcount: "+loadCount);
+		}
 		GUILayout.EndArea();
 	}
 }
